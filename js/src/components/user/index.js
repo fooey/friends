@@ -60,7 +60,7 @@ class User extends React.Component {
 
         return {
             user: this.__getUser(props.id),
-            activeTab: 'friends-add',
+            activeTab: 'friends',
             nonFriends,
         };
     }
