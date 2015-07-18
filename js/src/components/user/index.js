@@ -36,7 +36,7 @@ class User extends React.Component {
 
         console.log('default props', props);
 
-        this.state = this.__getInitialState(props);
+        this.state = this.__getInitialState.call(this, props);
     }
 
 
@@ -58,9 +58,11 @@ class User extends React.Component {
         //     this.props.id,
         // );
 
+        const activeTab = this.state && this.state.activeTab || 'friends';
+
         return {
             user: this.__getUser(props.id),
-            activeTab: 'friends',
+            activeTab,
             nonFriends,
         };
     }
@@ -81,7 +83,7 @@ class User extends React.Component {
     componentWillReceiveProps(nextProps) {
         // console.log('user::componentWillReceiveProps', nextProps);
 
-        this.setState(this.__getInitialState(nextProps));
+        this.setState(this.__getInitialState.call(this, nextProps));
     }
 
 
@@ -268,7 +270,7 @@ class User extends React.Component {
 
                 <pre>user: {JSON.stringify(this.state.user, null, '    ')}</pre>
                 <pre>friends: {JSON.stringify(this.props.friends, null, '    ')}</pre>
-                <pre>users: {JSON.stringify(this.props.users, null, '    ')}</pre>
+                {/*<pre>users: {JSON.stringify(this.props.users, null, '    ')}</pre>*/}
             </section>
         );
     }

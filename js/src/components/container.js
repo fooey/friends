@@ -47,6 +47,12 @@ class App extends React.Component {
 
 
     render() {
+        // console.log(this.state.friends);
+        const userFriends = _.filter(this.state.friends, f => {
+            // console.log(f);
+            return f.userId === this.state.activeUserId;
+        });
+
         return (
             <div>
 
@@ -74,7 +80,7 @@ class App extends React.Component {
                                 id      = {this.state.activeUserId}
                                 users   = {this.state.users}
                                 avatars = {this.state.avatars}
-                                friends = {_.filter(this.state.friends, f => f.userId === this.state.activeUserId)}
+                                friends = {userFriends}
 
                                 handlers = {{
                                     setActiveUser: this.__setActiveUser.bind(this),
@@ -92,7 +98,13 @@ class App extends React.Component {
 
 
 
-                <pre>container state: {JSON.stringify(this.state, null, '    ')}</pre>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-md-12'>
+                            <pre>app state: {JSON.stringify(this.state, null, '    ')}</pre>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         );
