@@ -156,7 +156,7 @@ class User extends React.Component {
                                 <li className={this.state.activeTab === 'friends-network' ? 'active' : ''}>
                                     <a title='Friends Network' onClick={() => this.setState({activeTab: 'friends-network'})}>
                                         <i className='fa fa-cloud'></i>
-                                        <span className='nav-label'>Friends Network</span>
+                                        <span className='nav-label'>Show Friend Network</span>
                                     </a>
                                 </li>
                             </ul>
@@ -173,10 +173,10 @@ class User extends React.Component {
                                             return (
                                                 <li key={user.id}>
                                                     <span className='friend-actions'>
-                                                        <a className='friend-action' onClick={this.__removeFriend.bind(this, this.props.id, user.id)}>
+                                                        <a title="Remove Friend" className='friend-action' onClick={this.__removeFriend.bind(this, this.props.id, user.id)}>
                                                             <i className='fa fa-user-times'></i>
                                                         </a>
-                                                        <a className='friend-action' onClick={this.__setActiveUser.bind(this, user.id)}>
+                                                        <a title="Edit User" className='friend-action' onClick={this.__setActiveUser.bind(this, user.id)}>
                                                             <i className='fa fa-pencil-square-o'></i>
                                                         </a>
                                                     </span>
@@ -205,10 +205,10 @@ class User extends React.Component {
                                             return (
                                                 <li key={user.id}>
                                                     <span className='friend-actions'>
-                                                        <a className='friend-action' onClick={this.__addFriend.bind(this, this.props.id, user.id)}>
+                                                        <a title="Make Friend" className='friend-action' onClick={this.__addFriend.bind(this, this.props.id, user.id)}>
                                                             <i className='fa fa-user-plus'></i>
                                                         </a>
-                                                        <a className='friend-action' onClick={this.__setActiveUser.bind(this, user.id)}>
+                                                        <a title="Edit User" className='friend-action' onClick={this.__setActiveUser.bind(this, user.id)}>
                                                             <i className='fa fa-pencil-square-o'></i>
                                                         </a>
                                                     </span>
@@ -230,7 +230,8 @@ class User extends React.Component {
                                     </ul>
                                 </div>
                                 <div className={`tab-content friends-network ${this.state.activeTab === 'friends-network' ? 'active' : ''}`}>
-                                    <div>Giant Recursive Graph</div>
+                                    <div>
+                                    </div>
                                 </div>
 
                             </div>
