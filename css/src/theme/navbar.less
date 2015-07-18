@@ -1,0 +1,67 @@
+
+.navbar-default {
+    & .navbar-toggle:hover,
+    & .navbar-toggle:focus,
+    & .navbar-collapse,
+    & {
+        background-color: @brand-info;
+        border: none;
+        border-radius: 0;
+    }
+
+    margin: 0 0 40px 0;
+    min-width: 240px;
+
+    & .navbar-toggle {
+        border: none;
+        &:hover {
+            background-color: transparent;
+        }
+        .icon-bar {
+            background-color: rgba(255, 255, 255, .6);
+        }
+    }
+
+    .navbar-brand {
+        font-size: 20pt;
+        line-height: 60px;
+        padding: 0 20px;
+        margin: 0;
+        padding-left: 2vw;
+        font-weight: 300;
+    }
+
+    .navbar-nav {
+        margin: 0;
+        padding: 0 20px 0 0;
+        padding-right: 2vw;
+
+        & > li {
+            margin: 0 1em;
+            padding: 0;
+
+            & > a {
+                padding: 0;
+                margin: 0;
+                color: #fff;
+                display: block;
+                text-align: center;
+
+                font: 300 14pt/60px Roboto Condensed;
+                width: 100%;
+
+                @media(min-width: @grid-float-breakpoint) {
+                    display: inline-block;
+                }
+
+                opacity: .8;
+                transition: all 150ms ease-in;
+
+                i.fa {
+                    margin-right: .25em;
+                }
+            }
+        }
+
+    }
+}

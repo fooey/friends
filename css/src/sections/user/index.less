@@ -1,0 +1,81 @@
+.user-controls {
+
+    .avatar-selector {
+
+        margin: 1em 0 0;
+
+        img.avatar-option {
+            width: 128px;
+            height: 128px;
+            max-width: 15vw;
+
+            cursor: pointer;
+
+            border: 2px dashed transparent;
+
+            &.active {
+                border-color: #999;
+            }
+        }
+
+    }
+
+}
+
+.friends-manager {
+    margin: 2em 0;
+
+    .nav-tabs {
+        li {
+            .nav-label {
+                display: none;
+                @media(min-width: @grid-float-breakpoint) {
+                    display: inline-block;
+                }
+            }
+        }
+
+        i.fa {
+            margin: 0;
+            @media(min-width: @grid-float-breakpoint) {
+                margin-right: .5em;
+            }
+        }
+    }
+
+    .tab-panels {
+        padding: 1em;
+
+        .tab-content {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+}
+
+.users-list {
+    font-size: 14pt;
+    font-weight: 400;
+    line-height: 32px;
+
+    margin: .5em 0;
+
+    .friend-actions {
+        padding-right: .5em;
+
+        .friend-action {
+            padding: 0 .4em;
+        }
+    }
+
+
+    img.avatar {
+        height: 32px;
+        height: 32px;
+        margin-right: .5em;
+    }
+}
