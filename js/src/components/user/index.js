@@ -27,7 +27,7 @@ class User extends React.Component {
         avatars : React.PropTypes.object.isRequired,
         friends : React.PropTypes.array.isRequired,
         handlers: React.PropTypes.object.isRequired,
-        id      : React.PropTypes.number.isRequired,
+        id      : React.PropTypes.string.isRequired,
         users   : React.PropTypes.object.isRequired,
     }
 
@@ -240,7 +240,7 @@ class User extends React.Component {
                                         <p>Take care to avoid infinite loops, if a user has already been displayed, reuse/link to the existing node.</p>
                                         <p>One approach would be to render a graph using D3, best fit is probably a "Force Graph" variant like this example: http://bl.ocks.org/MoritzStefaner/1377729</p>
                                         <p>For this project though, I'd probably try to do some combination of a family tree and a directory structure.</p>
->                                    </div>
+                                    </div>
                                 </div>
 
                             </div>
