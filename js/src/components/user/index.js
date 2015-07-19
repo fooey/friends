@@ -144,7 +144,7 @@ class User extends React.Component {
                                 <li className={this.state.activeTab === 'friends' ? 'active' : ''}>
                                     <a title='My Friends' onClick={() => this.setState({activeTab: 'friends'})}>
                                         <i className='fa fa-users'></i>
-                                        <span className='nav-label'>Current Friends</span>
+                                        <span className='nav-label'>Show Friends</span>
                                     </a>
                                 </li>
                                 <li className={this.state.activeTab === 'friends-add' ? 'active' : ''}>
@@ -191,7 +191,11 @@ class User extends React.Component {
                                         })}
 
                                         {this.props.friends.length === 0
-                                            ? <li>No friends defined</li>
+                                            ? <li>
+                                                <a title='Find Friends' onClick={() => this.setState({activeTab: 'friends-add'})}>
+                                                     Add Friends
+                                                </a>
+                                            </li>
                                             : null
                                         }
 
@@ -231,7 +235,12 @@ class User extends React.Component {
                                 </div>
                                 <div className={`tab-content friends-network ${this.state.activeTab === 'friends-network' ? 'active' : ''}`}>
                                     <div>
-                                    </div>
+                                        <h4>Show Entire Friends Network</h4>
+                                        <p>Recursively follow friends of friends until the entire network of friends has been displayed</p>
+                                        <p>Take care to avoid infinite loops, if a user has already been displayed, reuse/link to the existing node.</p>
+                                        <p>One approach would be to render a graph using D3, best fit is probably a "Force Graph" variant like this example: http://bl.ocks.org/MoritzStefaner/1377729</p>
+                                        <p>For this project though, I'd probably try to do some combination of a family tree and a directory structure.</p>
+>                                    </div>
                                 </div>
 
                             </div>

@@ -6,8 +6,9 @@
  *
  */
 
-const React = require('react');
-const _     = require('lodash');
+const React   = require('react');
+const _       = require('lodash');
+const shortid = require('shortid');
 
 const User     = require('./user');
 
@@ -17,6 +18,8 @@ const User     = require('./user');
 const USER_DATA = require('../../../data/users.js');
 const AVATAR_DATA = require('../../../data/avatars.js');
 const FRIEND_DATA = require('../../../data/friends.js');
+
+const defaultUser = _.find(USER_DATA, user => user.name === 'Kate');
 
 
 
@@ -31,7 +34,7 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            activeUserId: 2,
+            activeUserId: defaultUser.id,
             users: USER_DATA,
             avatars: AVATAR_DATA,
             friends: FRIEND_DATA,
@@ -49,7 +52,8 @@ class App extends React.Component {
     render() {
         // console.log(this.state.friends);
         const userFriends = _.filter(this.state.friends, f => {
-            // console.log(f);
+            if (!f) console.log(f, JSON.stringify(this.state.friends));
+
             return f.userId === this.state.activeUserId;
         });
 
@@ -121,7 +125,7 @@ class App extends React.Component {
         console.log(`container::__addUser()`);
 
         this.setState(state => {
-            const id = Object.keys(this.state.users).length + 1;
+            const id = shortid.generate();
             const newUser = {
                 id,
                 avatarId: _.random(1, 4),
@@ -172,16 +176,21 @@ class App extends React.Component {
         console.log(`container::__addFriend(${userId}, ${friendId})`);
 
         this.setState(state => {
-            const id = Object.keys(this.state.friends).length + 1;
+            const id = shortid.generate();
+
             const newFriend = {
                 id,
                 userId,
                 friendId,
             };
 
-            state.friends[id] = newFriend;
+            let friends = _.cloneDeep(state.friends);
+            friends[id] = newFriend;
 
-            return {friends: state.friends};
+            // console.log(friends);
+            // console.log('friends', JSON.stringify(friends));
+
+            return {friends};
         });
     }
 
@@ -190,10 +199,20 @@ class App extends React.Component {
         console.log(`container::__removeFriend(${userId}, ${friendId})`);
 
         this.setState(state => {
-            const friends = _.filter(state.friends, friend => !(
-                friend.userId === userId
-                && friend.friendId === friendId
-            ));
+
+            // console.log(state.friends);
+            // console.log(JSON.stringify(state.friends));
+
+            let friends = _.chain(state.friends)
+                .filter(friend => (
+                    friend.userId !== userId
+                    || friend.friendId !== friendId
+                ))
+                .indexBy('id')
+                .value();
+
+            // console.log(friends);
+            // console.log(JSON.stringify(friends));
 
             return {friends};
         });

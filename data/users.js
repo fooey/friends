@@ -2,6 +2,8 @@
 
 
 const _ = require('lodash');
+const shortid = require('shortid');
+
 
 const names = [
     'Richard',
@@ -15,10 +17,10 @@ const names = [
 
 
 let users = _.chain(names)
-    .map((n, i) => {
+    .map(val => {
         return {
-            name: n,
-            id: i + 1,
+            name: val,
+            id: shortid.generate(),
             avatarId: _.random(1, 4),
         };
     })

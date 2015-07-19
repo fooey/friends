@@ -1,48 +1,59 @@
 'use strict';
 
+const _       = require('lodash');
+const shortid = require('shortid');
 
-const _ = require('lodash');
+const USER_DATA = require('./users');
+
+const RICHARD = _.find(USER_DATA, user => user.name === 'Richard').id;
+const KATE = _.find(USER_DATA, user => user.name === 'Kate').id;
+const JAVIER = _.find(USER_DATA, user => user.name === 'Javier').id;
+const KEVIN = _.find(USER_DATA, user => user.name === 'Kevin').id;
+const ALEXIS = _.find(USER_DATA, user => user.name === 'Alexis').id;
+const MARTHA = _.find(USER_DATA, user => user.name === 'Martha').id;
+const LANIE = _.find(USER_DATA, user => user.name === 'Lanie').id;
+
 
 const friends = [
-    {userId: 1, friendId: 2},
-    {userId: 1, friendId: 3},
-    {userId: 1, friendId: 4},
-    {userId: 1, friendId: 5},
-    {userId: 1, friendId: 6},
-    {userId: 1, friendId: 7},
+    {userId: RICHARD, friendId: KATE},
+    {userId: RICHARD, friendId: JAVIER},
+    {userId: RICHARD, friendId: KEVIN},
+    {userId: RICHARD, friendId: ALEXIS},
+    {userId: RICHARD, friendId: MARTHA},
+    {userId: RICHARD, friendId: LANIE},
 
-    {userId: 2, friendId: 1},
-    {userId: 2, friendId: 3},
-    {userId: 2, friendId: 4},
-    {userId: 2, friendId: 7},
+    {userId: KATE, friendId: RICHARD},
+    {userId: KATE, friendId: JAVIER},
+    {userId: KATE, friendId: KEVIN},
+    {userId: KATE, friendId: LANIE},
 
-    {userId: 3, friendId: 1},
-    {userId: 3, friendId: 2},
-    {userId: 3, friendId: 4},
-    {userId: 3, friendId: 7},
+    {userId: JAVIER, friendId: RICHARD},
+    {userId: JAVIER, friendId: KATE},
+    {userId: JAVIER, friendId: KEVIN},
+    {userId: JAVIER, friendId: LANIE},
 
-    {userId: 4, friendId: 1},
-    {userId: 4, friendId: 2},
-    {userId: 4, friendId: 3},
+    {userId: KEVIN, friendId: RICHARD},
+    {userId: KEVIN, friendId: KATE},
+    {userId: KEVIN, friendId: JAVIER},
 
-    {userId: 5, friendId: 1},
-    {userId: 5, friendId: 2},
-    {userId: 5, friendId: 6},
-    {userId: 5, friendId: 7},
+    {userId: ALEXIS, friendId: RICHARD},
+    {userId: ALEXIS, friendId: KATE},
+    {userId: ALEXIS, friendId: MARTHA},
+    {userId: ALEXIS, friendId: LANIE},
 
-    {userId: 6, friendId: 1},
-    {userId: 6, friendId: 5},
+    {userId: MARTHA, friendId: RICHARD},
+    {userId: MARTHA, friendId: ALEXIS},
 
-    {userId: 7, friendId: 2},
-    {userId: 7, friendId: 3},
-    {userId: 7, friendId: 4},
-    {userId: 7, friendId: 5},
+    {userId: LANIE, friendId: KATE},
+    {userId: LANIE, friendId: JAVIER},
+    {userId: LANIE, friendId: KEVIN},
+    {userId: LANIE, friendId: ALEXIS},
 ];
 
 
 let users = _.chain(friends)
-    .map((obj, i) => {
-        obj.id = i + 1;
+    .map(obj => {
+        obj.id = shortid.generate();
         return obj;
     })
     .indexBy('id')
