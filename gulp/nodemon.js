@@ -11,9 +11,6 @@ module.exports = function(options, livereload, cb) {
     var called = false;
 
     var config = _.merge({
-        execMap: {
-            js: 'iojs',
-        },
         script: './server.js',
         ext: 'js',
         ignore: [
