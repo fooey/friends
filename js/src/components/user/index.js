@@ -245,7 +245,7 @@ class User extends React.Component {
                                         </p>
                                         <p>
                                             For this project, I'd probably keep it HTML based, and try to do something roughly like a directory tree.
-                                            The cleanest way, for both usability and implentation, is probably to let a user drill down manually and allow them to follow the paths and loops in whatever order they find most interesting.
+                                            The cleanest way, for both usability and implementation, is probably to let a user drill down manually and allow them to follow the paths and loops in whatever order they find most interesting.
                                         </p>
                                         <p>The graph view is probably better for a high level overview and to identify clusters, while the tree view would provide a more granular way to browse.</p>
 
