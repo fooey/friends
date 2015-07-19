@@ -227,7 +227,7 @@ class User extends React.Component {
                                         })}
 
                                         {this.state.nonFriends.length === 0
-                                            ? <li>Already friends with everyone</li>
+                                            ? <li>Already friends with everyone!</li>
                                             : null
                                         }
 
@@ -238,8 +238,17 @@ class User extends React.Component {
                                         <h4>Show Entire Friends Network</h4>
                                         <p>Recursively follow friends of friends until the entire network of friends has been displayed</p>
                                         <p>Take care to avoid infinite loops, if a user has already been displayed, reuse/link to the existing node.</p>
-                                        <p>One approach would be to render a graph using D3, best fit is probably a "Force Graph" variant like this example: http://bl.ocks.org/MoritzStefaner/1377729</p>
-                                        <p>For this project though, I'd probably try to do some combination of a family tree and a directory structure.</p>
+                                        <p>
+                                            One approach would be to render a graph using a library like D3, best fit is probably a "Force Graph" style like this example:
+                                            <a href='http://bl.ocks.org/MoritzStefaner/1377729'>http://bl.ocks.org/MoritzStefaner/1377729</a>.
+                                           A visual graph could too big and interconnected to be usable pretty quickly though I suspect.
+                                        </p>
+                                        <p>
+                                            For this project, I'd probably keep it HTML based, and try to do something roughly like a directory tree.
+                                            The cleanest way, for both usability and implentation, is probably to let a user drill down manually and allow them to follow the paths and loops in whatever order they find most interesting.
+                                        </p>
+                                        <p>The graph view is probably better for a high level overview and to identify clusters, while the tree view would provide a more granular way to browse.</p>
+
                                     </div>
                                 </div>
 
